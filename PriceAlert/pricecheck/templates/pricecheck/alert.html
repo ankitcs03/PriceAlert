@@ -1,0 +1,7 @@
+
+<form action="{% url '#' %}" method="post"> 
+	{% csrf_token %}
+	<label> Email at : </label> <input type="text" name="email_id" />
+	<label> Price below Rs. : </label> <input type="text" name="alert_price" />
+	<input type="submit" value="Submit"/>
+</form>

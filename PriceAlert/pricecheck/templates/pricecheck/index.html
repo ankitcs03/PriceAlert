@@ -1,0 +1,36 @@
+{% load static %}
+
+<html>
+
+    <head>
+        <title>Price Alert - Get an Amazon/Flipkart price alert!</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'pricecheck/style.css' %}" />
+    </head>
+
+    <body>
+        <div class="info"> </div>
+        <div id="content">
+            <div class="narrowmain">
+                <div id="searchblock">
+                    <div id="logo"> Enter Product Name </div>
+                    <div id="searchform">
+                        <form action="{% url 'pricecheck:item' %}" method="POST">
+                            {% csrf_token %}
+                            <label > Source Location :</label> 
+                            <input type="radio" name="location" id="1" value="Flipkart"/>
+                            <label > Flipkart </label>
+                            <input type="radio" name="location" id="2" value="Amazon"/>
+                            <label > Amazon </label> <br>
+                            <div class="searchbox">
+                                <input class="searchtext" type="textbox" name="q" size="50" />
+                                <button id="submitbtn" class="searchbtn" title="Search" type="submit">Search</button>
+                            </div>
+                        </form>
+                        <div class="sectionhead">Questions or comments? Email me <a href="mailto:ankit.cs.03@gmail.com"> ankit.cs.03@gmail.com </a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

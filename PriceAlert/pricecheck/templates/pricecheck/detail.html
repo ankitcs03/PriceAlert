@@ -1,0 +1,27 @@
+<!-- {% if error_message %}
+	<h1> {{ error_message }}</h1>
+{% endif %} -->
+
+{% if item %}
+	<h2>Your are looking for {{ item }} on {{ source }} </h2>
+
+	<h2>Product name : </h2> <p> {{ prod_name }} </p>
+	<h2>Product price : </h2> <p> {{ price }} </p> 
+
+	<h3>Creat an alert on price drop</h3>
+
+	<form action="{% url 'pricecheck:alert' %}" method="post"> 
+		{% csrf_token %}
+		<input type="hidden" name="item" value= "{{ item }}">
+		<input type="hidden" name="prod_name" value= "{{ prod_name }}" >
+		<input type="hidden" name="source" value= "{{ source }}">
+		<input type="hidden" name="baseurl" value= "{{ baseurl }}">
+		<label> <b> Email at : <b></label> <input type="text" name="email_id" />
+		<label> <b> When price below Rs. : <b></label> <input type="text" name="alert_price" />
+		<input type="submit" value="Submit"/>
+	</form>
+{% endif %}
+
+{% if message %}
+	<b> {{ message}} </b>
+{% endif %}
