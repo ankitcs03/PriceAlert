@@ -2,12 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from . scrap import Fscrap, Ascrap
-
-
-#from pricecheck.form import AlertForm
 from . models import Alert
-# Create your views here.
-#from . priceCompare import priceCompare 
 
 def index(request):
 	return render(request, 'pricecheck/index.html')
