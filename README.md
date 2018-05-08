@@ -30,5 +30,9 @@ If a notification is set, monitor the price of the product and alert the user by
 - BeautifulSoup required for scraping 
 - django-celery module required to run priceCompare.py in a regular interval to check if price has been dropped.
 - [ If you need help to setup django-celery, please follow this link ](https://chase-seibert.github.io/blog/2010/07/09/djangocelery-quickstart-or-how-i-learned-to-stop-using-cron-and-love-celery.html)
-
+- Needs to update priceCompare.py to set Email_ID and password of email sender's account. Currently it is set as "dummy". 
+- Currently mail server name is set for hotmail/outlook. Update it if you are using Gmail or any ohter mail server
+>	UserName = "**dummy**"
+>	Password = "**dummy**"
+> s = smtplib.SMTP('**smtp.live.com**', 587)
    
