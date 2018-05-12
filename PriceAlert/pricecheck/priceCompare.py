@@ -6,7 +6,8 @@ from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen as uReq
 
 import smtplib
-
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 def pCompare(alert):
 	if alert.url :
@@ -35,15 +36,17 @@ def sendEmail(alert):
 	s = smtplib.SMTP('smtp.live.com', 587)
 	s.ehlo()
 	s.starttls()
-
 	s.login(UserName, Password)
-
-	message = """Subject: Price Alert!!  
-
-
-	price has been drop to (or below) %s for product %s""" % ( str(alert.alert_price) , alert.item )
-
-	s.sendmail(UserName, str(alert.email_id), message)
+	
+	msg = MIMEMultipart()
+	msg['From'] = 'ankitcs03@hotmail.com'
+	msg['To'] = 'ankit.cs.03@gmail.com'
+	msg['Subject'] = "Alert Messgae !!! "
+	emailText = "Price has been drop to (or below) %s for product %s" %( str(alert.alert_price) , alert.item )
+	emailBody = MIMEText(emailText, 'plain')
+	msg.attach(emailBody)
+	s.sendmail("ankitcs03@hotmail.com", "ankit.cs.03@gmail.com", msg.as_string())
+	
 	print("Alert Email send successfully!!")
 	print()
 	s.quit()
